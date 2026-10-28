@@ -86,6 +86,8 @@ class _RefinedBackupPageState extends State<RefinedBackupPage>
       bytes: bytes,
     );
     if (output != null && mounted) {
+      await api.markExported();
+      if (!mounted) return;
       widget.controller.reload();
       tell(context, '备份已导出。');
     }

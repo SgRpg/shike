@@ -11,8 +11,9 @@ import 'persistence.dart';
 
 abstract class BackupFiles {
   Future<Uint8List> read(String path);
+  String stagedPath(String session, String name);
   Future<String> stage(String session, String name, Uint8List bytes);
-  String destination(String session, String name);
+  String destination(String session, String name, Uint8List bytes);
   Future<void> promote(String staged, String destination);
   Future<void> remove(String path);
 }
@@ -26,13 +27,16 @@ class MemoryBackupFiles extends BackupFiles {
       files[path] ?? (throw StateError('附件缺失'));
   @override
   Future<String> stage(String session, String name, Uint8List bytes) async {
-    final path = 'staging/$session/$name';
+    final path = stagedPath(session, name);
     files[path] = bytes;
     return path;
   }
 
   @override
-  String destination(String session, String name) => 'restored/$session/$name';
+  String stagedPath(String session, String name) => 'staging/$session/$name';
+  @override
+  String destination(String session, String name, Uint8List bytes) =>
+      'restored/$session/$name';
   @override
   Future<void> promote(String staged, String destination) async {
     promotions++;
@@ -53,6 +57,7 @@ class ImportPlan {
   final Map<String, Uint8List> media;
   final Set<String> skips;
   final Set<String> gallerySkips;
+  final Set<String> resourceReplacements;
   ImportPlan(
     this.session,
     this.baseline,
@@ -61,6 +66,7 @@ class ImportPlan {
     this.media,
     this.skips,
     this.gallerySkips,
+    this.resourceReplacements,
   );
   int get duplicates => skips.length;
   int get conflicts => idMap.entries.where((e) => e.key != e.value).length;
@@ -91,9 +97,12 @@ class BackupService {
     };
     final blobs = <String, Uint8List>{};
     final mapping = <String, String>{};
+    var total = 0;
     for (final path in paths) {
       final name = 'media/${blobs.length.toString().padLeft(6, '0')}';
       blobs[name] = await files.read(path);
+      total += blobs[name]!.length;
+      if (total > maxBytes) throw const FormatException('备份超过当前容量限制');
       mapping[path] = name;
     }
     copy.media.removeWhere((key, value) => !paths.contains(key));
@@ -115,6 +124,9 @@ class BackupService {
       },
     };
     final manifestBytes = utf8.encode(jsonEncode(manifest));
+    if (total + manifestBytes.length > maxBytes) {
+      throw const FormatException('备份超过当前容量限制');
+    }
     final archive = Archive()
       ..addFile(
         ArchiveFile('manifest.json', manifestBytes.length, manifestBytes),
@@ -123,11 +135,12 @@ class BackupService {
       archive.addFile(ArchiveFile(e.key, e.value.length, e.value));
     }
     final bytes = Uint8List.fromList(ZipEncoder().encode(archive));
-    await state.transaction(
-      (s) => s.meta['lastBackup'] = clock().toIso8601String(),
-    );
     return bytes;
   }
+
+  Future<void> markExported() => state.transaction(
+    (s) => s.meta['lastBackup'] = clock().toIso8601String(),
+  );
 
   Future<ImportPlan> prepareImport(Uint8List bytes) async {
     if (bytes.length > maxBytes) throw const FormatException('备份过大');
@@ -200,6 +213,33 @@ class BackupService {
         }
       } catch (_) {}
     }
+    final needed = <String>{
+      for (final e in incoming.entries.entries)
+        if (!skips.contains(e.key)) ...[
+          ...List<String>.from(e.value['photos'] ?? []),
+          if (e.value['audio'] != null) e.value['audio'] as String,
+        ],
+      for (final e in incoming.gallery.entries)
+        if (!gallerySkips.contains(e.key)) e.value['path'] as String,
+    };
+    final resourceReplacements = <String>{};
+    for (final r in incoming.resources.entries) {
+      if (r.value['used'] != true || r.value['path'] == null) continue;
+      final old = current.resources[r.key];
+      var available = false;
+      if (old?['path'] != null) {
+        try {
+          await files.read(old['path']);
+          available = true;
+        } catch (_) {}
+      }
+      if (!available) {
+        needed.add(r.value['path']);
+        resourceReplacements.add(r.key);
+      }
+    }
+    media.removeWhere((key, value) => !needed.contains(key));
+    incoming.media.removeWhere((key, value) => !needed.contains(key));
     return ImportPlan(
       const Uuid().v4(),
       jsonEncode(current.toJson()),
@@ -208,6 +248,7 @@ class BackupService {
       media,
       skips,
       gallerySkips,
+      resourceReplacements,
     );
   }
 
@@ -219,8 +260,12 @@ class BackupService {
     try {
       for (final item in plan.media.entries) {
         final name = item.key.split('/').last;
-        staged[item.key] = await files.stage(plan.session, name, item.value);
-        destinations[item.key] = files.destination(plan.session, name);
+        staged[item.key] = files.stagedPath(plan.session, name);
+        destinations[item.key] = files.destination(
+          plan.session,
+          name,
+          item.value,
+        );
       }
       await state.transaction((s) {
         if (jsonEncode(s.toJson()) != plan.baseline) {
@@ -232,12 +277,19 @@ class BackupService {
           'destinations': destinations.values.toList(),
         };
       });
+      for (final item in plan.media.entries) {
+        await files.stage(plan.session, item.key.split('/').last, item.value);
+      }
       for (final item in staged.entries) {
         await files.promote(item.value, destinations[item.key]!);
       }
       await state.transaction((s) {
         if (s.meta['importSession']?['id'] != plan.session) {
           throw StateError('恢复状态不符');
+        }
+        final current = s.copy()..meta.remove('importSession');
+        if (jsonEncode(current.toJson()) != plan.baseline) {
+          throw StateError('恢复期间记录有变化，请重新预览备份');
         }
         final incoming = plan.imported.copy();
         _mapMedia(incoming, destinations);
@@ -246,7 +298,7 @@ class BackupService {
           if (plan.skips.contains(item.key)) {
             final old = Json.from(s.capsules[item.key] ?? {}),
                 incomingFlags = Json.from(incoming.capsules[item.key] ?? {});
-            for (final key in ['releasedAt', 'openedAt','hintedAt']) {
+            for (final key in ['releasedAt', 'openedAt', 'hintedAt']) {
               if (old[key] == null && incomingFlags[key] != null) {
                 old[key] = incomingFlags[key];
               }
@@ -291,6 +343,8 @@ class BackupService {
           s.resources[item.key] = {
             ...Json.from(item.value),
             ...old,
+            if (plan.resourceReplacements.contains(item.key))
+              'path': item.value['path'],
             'used': old['used'] == true || item.value['used'] == true,
           };
         }
@@ -298,6 +352,13 @@ class BackupService {
         final attempts = Json.from(incoming.meta['rewardAttempts'] ?? {})
           ..addAll(Json.from(s.meta['rewardAttempts'] ?? {}));
         s.meta['rewardAttempts'] = attempts;
+        final weeks = Json.from(incoming.meta['rememberedWeeks'] ?? {})
+          ..addAll(Json.from(s.meta['rememberedWeeks'] ?? {}));
+        for (final raw in [incoming.meta['randomWeek'], s.meta['randomWeek']]) {
+          final key = normalizedWeek(raw);
+          if (key != null) weeks.putIfAbsent(key, () => true);
+        }
+        s.meta['rememberedWeeks'] = weeks;
         for (final key in ['galleryImported', 'capsulesOpened']) {
           final old = s.meta[key] as int? ?? 0,
               restored = incoming.meta[key] as int? ?? 0;
@@ -408,6 +469,13 @@ class BackupService {
     for (final photo in s.gallery.values) {
       if (!media.contains(photo['path'])) throw const FormatException('拾影附件缺失');
     }
+    for (final resource in s.resources.values) {
+      if (resource['used'] == true &&
+          resource['path'] != null &&
+          !media.contains(resource['path'])) {
+        throw const FormatException('卡片照片缺失');
+      }
+    }
   }
 
   static void _mapMedia(JournalState s, Map<String, String> paths) {
@@ -478,6 +546,7 @@ class BackupService {
       s.grants[c['key']] = c;
     }
     s.meta['galleryImported'] = s.gallery.length;
+    s.meta['randomWeek'] = normalizedWeek(old['randomWeek']);
     return {
       'format': 'shike',
       'version': 2,

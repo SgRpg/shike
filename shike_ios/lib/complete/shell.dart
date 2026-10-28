@@ -54,7 +54,8 @@ class _RefinedHomeState extends State<RefinedHome> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    widget.controller.notifications.onOpen = (id) {
+    widget.controller.notifications.onOpen = (id) async {
+      await widget.controller.repository.reconcileCapsules();
       final d = widget.controller.visible.where((e) => e.id == id).firstOrNull;
       if (d != null && mounted) openReading(context, widget.controller, d);
     };

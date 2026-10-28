@@ -13,8 +13,8 @@ class PlatformBackupFiles extends MemoryBackupFiles {
       ? base64Decode(path.split(',').last)
       : super.read(path);
   @override
-  String destination(String session, String name) =>
-      'data:image;base64,${base64Encode(files['staging/$session/$name']!)}';
+  String destination(String session, String name, Uint8List bytes) =>
+      'data:image;base64,${base64Encode(bytes)}';
 }
 
 Future<BackupFiles> openBackupFiles() async => PlatformBackupFiles();

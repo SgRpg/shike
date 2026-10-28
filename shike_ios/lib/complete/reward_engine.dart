@@ -185,16 +185,21 @@ class RewardEngine {
         }
         final randomKey = 'remembered:${naturalDay(date)}',
             week = mondayKey(date);
+        final weeks = Json.from(s.meta['rememberedWeeks'] ?? {});
+        final legacyWeek = normalizedWeek(s.meta['randomWeek']);
+        if (legacyWeek != null) weeks.putIfAbsent(legacyWeek, () => true);
         if (!attempts.containsKey(randomKey)) {
           attempts[randomKey] = {'event': event.id};
-          if (s.meta['randomWeek'] != week &&
+          if (!weeks.containsKey(week) &&
               lottery() < probabilities.remembered) {
             // award() owns the attempt record for successful draws.
             attempts.remove(randomKey);
             award(randomKey, '被记住卡', '这一刻被轻轻记住了。');
             s.meta['randomWeek'] = week;
+            weeks[week] = randomKey;
           }
         }
+        s.meta['rememberedWeeks'] = weeks;
       }
     } else if (event.kind == 'gallery-imported') {
       final count =

@@ -8,6 +8,12 @@ String naturalDay(DateTime d) =>
     '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 String mondayKey(DateTime d) =>
     naturalDay(DateTime(d.year, d.month, d.day - d.weekday + 1));
+String? normalizedWeek(dynamic value) {
+  if (value is! String) return null;
+  final parts = value.split('-').map(int.tryParse).toList();
+  if (parts.length != 3 || parts.any((v) => v == null)) return null;
+  return naturalDay(DateTime(parts[0]!, parts[1]!, parts[2]!));
+}
 
 Json? usableWeather(Json settings, Json meta, DateTime now) {
   if (settings['weather'] != true || meta['currentWeather'] == null) {

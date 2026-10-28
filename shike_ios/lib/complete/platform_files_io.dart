@@ -49,7 +49,7 @@ class PlatformBackupFiles extends BackupFiles {
       : await File(path).readAsBytes();
   @override
   Future<String> stage(String session, String name, Uint8List bytes) async {
-    final path = p.join(root, 'staging', session, name);
+    final path = stagedPath(session, name);
     verify(path);
     await File(path).parent.create(recursive: true);
     await File(path).writeAsBytes(bytes, flush: true);
@@ -57,7 +57,10 @@ class PlatformBackupFiles extends BackupFiles {
   }
 
   @override
-  String destination(String session, String name) =>
+  String stagedPath(String session, String name) =>
+      p.join(root, 'staging', session, name);
+  @override
+  String destination(String session, String name, Uint8List bytes) =>
       p.join(root, 'media', session, name);
   @override
   Future<void> promote(String staged, String destination) async {

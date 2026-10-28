@@ -115,10 +115,10 @@ def assets(ipa, manifest, output):
     with zipfile.ZipFile(ipa) as original, zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as result:
         if 'Payload/Runner.app/Info.plist' not in original.namelist():
             raise ValueError('不是拾刻的未签名安装包')
-        if any('_CodeSignature/' in n or n.endswith('embedded.mobileprovision') for n in original.namelist()):
+        if any(n.startswith('Payload/Runner.app/_CodeSignature/') or n == 'Payload/Runner.app/embedded.mobileprovision' for n in original.namelist()):
             raise ValueError('请在签名前注入素材，不接受已签名安装包')
         for item in original.infolist():
-            if not item.filename.startswith(prefix):
+            if not item.filename.startswith(prefix) and not item.filename.startswith('Payload/Runner.app/Frameworks/App.framework/_CodeSignature/'):
                 result.writestr(item, original.read(item))
         for name, data in additions.items():
             result.writestr(prefix + name, data)

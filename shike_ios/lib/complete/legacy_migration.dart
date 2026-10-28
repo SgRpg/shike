@@ -82,7 +82,32 @@ Future<void> migrateLegacy(
         in jsonDecode(prefs.getString('rewards.cards') ?? '[]') as List) {
       s.grants.putIfAbsent(card['key'], () => card);
     }
-    s.meta['randomWeek'] = prefs.getString('rewards.randomWeek');
+    s.meta['randomWeek'] = normalizedWeek(
+      prefs.getString('rewards.randomWeek'),
+    );
+    if (s.meta['randomWeek'] != null) {
+      s.meta['rememberedWeeks'] = {s.meta['randomWeek']: true};
+    }
+    for (final image in readMap('refined.cardImages').entries) {
+      final resource = 'legacy-card:${image.key}';
+      s.resources[resource] = {
+        'kind': 'photo',
+        'used': true,
+        'available': true,
+        'path': image.value,
+      };
+      if (s.grants[image.key] != null) {
+        s.grants[image.key]['resource'] = resource;
+      }
+    }
+    for (final d in legacy.entries) {
+      for (final file in [...d.photos, if (d.audio != null) d.audio!]) {
+        s.media[file] = {
+          'path': file,
+          'kind': file == d.audio ? 'audio' : 'image',
+        };
+      }
+    }
     // Baseline every previously achieved fixed rule; upgrading never emits a backlog.
     final old = legacy.entries.where((d) => d.state == 'done').toList();
     final days = old.map((d) => naturalDay(d.created)).toSet();

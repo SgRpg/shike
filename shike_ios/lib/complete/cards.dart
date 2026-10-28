@@ -263,6 +263,7 @@ Future<void> completionFeedback(
 ) async {
   if (!context.mounted) return;
   final overlay = Overlay.of(context, rootOverlay: true);
+  final navigator = Navigator.of(context, rootNavigator: true);
   if (entry.state != 'capsule' && (entry.mood ?? 5) <= 2) {
     try {
       final phrase = await controller.phrase('low');
@@ -293,7 +294,9 @@ Future<void> completionFeedback(
           ),
         );
         overlay.insert(e);
-        Timer(const Duration(milliseconds: 2500), e.remove);
+        Timer(const Duration(milliseconds: 2500), () {
+          if (e.mounted) e.remove();
+        });
       }
     } catch (_) {
       /* Journal save has already succeeded. */
@@ -303,7 +306,9 @@ Future<void> completionFeedback(
     final cards = await controller.reward(entry);
     if (cards.isEmpty) return;
     Timer(Duration(milliseconds: (entry.mood ?? 5) <= 2 ? 2700 : 0), () {
-      if (context.mounted) showRewardBatch(context, controller, cards);
+      if (overlay.mounted) {
+        _presentBatch(overlay, navigator, controller, cards);
+      }
     });
   } catch (_) {
     /* Reward errors do not turn a saved journal into a failed submission. */
@@ -316,14 +321,28 @@ void showRewardBatch(
   List<RewardCard> cards,
 ) {
   if (cards.isEmpty || !context.mounted) return;
-  final overlay = Overlay.of(context, rootOverlay: true);
+  _presentBatch(
+    Overlay.of(context, rootOverlay: true),
+    Navigator.of(context, rootNavigator: true),
+    controller,
+    cards,
+  );
+}
+
+void _presentBatch(
+  OverlayState overlay,
+  NavigatorState navigator,
+  CompleteController controller,
+  List<RewardCard> cards,
+) {
+  if (cards.isEmpty || !overlay.mounted || !navigator.mounted) return;
   unawaited(HapticFeedback.lightImpact().catchError((_) {}));
   late OverlayEntry item;
   bool removed = false;
   void remove() {
     if (!removed) {
       removed = true;
-      item.remove();
+      if (item.mounted) item.remove();
     }
   }
 
@@ -335,30 +354,51 @@ void showRewardBatch(
       child: Material(
         color: Paper.bg,
         borderRadius: BorderRadius.circular(9),
-        elevation: 2,
+        elevation: 1,
+        shadowColor: Paper.ink.withValues(alpha: .08),
         child: InkWell(
           onTap: () {
             remove();
-            Navigator.push(
-              context,
+            navigator.push(
               MaterialPageRoute(
-                builder: (_) =>
-                    RewardBatchPage(controller: controller, cards: cards),
+                builder: (_) => cards.length == 1
+                    ? RefinedCardDetail(
+                        controller: controller,
+                        card: cards.single,
+                      )
+                    : RewardBatchPage(controller: controller, cards: cards),
               ),
             );
           },
           child: Padding(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                const LineMark(Mark.card, size: 27),
+                SizedBox(
+                  width: 72,
+                  height: 80,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: controller.cardImages[cards.first.key] == null
+                        ? KeepsakeArt(cardPanel(cards.first))
+                        : storedImage(controller.cardImages[cards.first.key]!),
+                  ),
+                ),
                 const SizedBox(width: 14),
                 Expanded(
-                  child: Text(
-                    cards.length == 1
-                        ? cards.first.title
-                        : '拾起了 ${cards.length} 张小刻痕',
-                    style: Paper.title(17),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(cards.first.title, style: Paper.title(16)),
+                      const SizedBox(height: 5),
+                      Text(
+                        cards.length == 1
+                            ? cards.first.description
+                            : '这次有 ${cards.length} 张小刻痕',
+                        style: Paper.meta.copyWith(fontSize: 12),
+                      ),
+                    ],
                   ),
                 ),
                 const LineMark(Mark.next, size: 16),

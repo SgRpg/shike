@@ -14,14 +14,21 @@ workflows:
         script: flutter pub get
       - name: Analyze and test
         script: |
+          set -e
           flutter analyze
           flutter test --reporter expanded
           python3 ../tools/test_ios_delivery.py
       - name: Build unsigned device app
         script: flutter build ios --release --no-codesign --target lib/complete_main.dart
       - name: Package unsigned IPA
-        script: python3 ../tools/ios_delivery.py package --app build/ios/iphoneos/Runner.app --output build/ios/shike-unsigned.ipa
+        script: |
+          set -e
+          mkdir -p "$CM_BUILD_DIR/delivery"
+          python3 ../tools/ios_delivery.py package --app build/ios/iphoneos/Runner.app --output "$CM_BUILD_DIR/delivery/shike-unsigned.ipa"
+          xcodebuild -version > "$CM_BUILD_DIR/delivery/BUILD-INFO.txt"
+          flutter --version >> "$CM_BUILD_DIR/delivery/BUILD-INFO.txt"
+          git rev-parse HEAD >> "$CM_BUILD_DIR/delivery/BUILD-INFO.txt"
     artifacts:
-      - shike_ios/build/ios/shike-unsigned.ipa
-      - shike_ios/build/ios/iphoneos/Runner.app/**
+      - $CM_BUILD_DIR/delivery/shike-unsigned.ipa
+      - $CM_BUILD_DIR/delivery/BUILD-INFO.txt
       - /tmp/xcodebuild_logs/*.log

@@ -90,6 +90,7 @@ class JournalRepository extends ChangeNotifier {
       if (d.state == 'capsule') {
         s.capsules[d.id] = {
           'zone': timezone ?? clock().timeZoneName,
+          'createdOffsetMinutes': clock().timeZoneOffset.inMinutes,
           'unlockUtc': d.unlockAt!.toUtc().toIso8601String(),
         };
       }
@@ -176,12 +177,16 @@ class JournalRepository extends ChangeNotifier {
     if (s.meta['dueHintDay'] == today) return <String>[];
     final due = <String>[
       for (final item in s.capsules.entries)
-        if (item.value['releasedAt'] != null && item.value['openedAt'] == null&&item.value['hintedAt']==null)
+        if (item.value['releasedAt'] != null &&
+            item.value['openedAt'] == null &&
+            item.value['hintedAt'] == null)
           item.key,
     ];
     if (due.isNotEmpty) {
       s.meta['dueHintDay'] = today;
-      for(final id in due) {s.capsules[id]['hintedAt']=clock().toUtc().toIso8601String();}
+      for (final id in due) {
+        s.capsules[id]['hintedAt'] = clock().toUtc().toIso8601String();
+      }
     }
     return due;
   });

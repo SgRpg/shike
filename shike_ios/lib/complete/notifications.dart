@@ -1,4 +1,7 @@
 import 'package:flutter/foundation.dart';
+
+import 'dart:async';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as zones;
 import 'package:timezone/timezone.dart' as tz;
@@ -11,13 +14,21 @@ class CapsuleNotificationService {
   final FlutterLocalNotificationsPlugin plugin;
   void Function(String id)? onOpen;
   bool initialized = false;
+  Future<void>? _initializing;
   String? launchId;
   Future<void> _queue = Future.value();
   CapsuleNotificationService(
     this.repository, {
     FlutterLocalNotificationsPlugin? plugin,
   }) : plugin = plugin ?? FlutterLocalNotificationsPlugin();
-  Future<void> initialize() async {
+  Future<void> initialize() {
+    if (kIsWeb || initialized) return Future.value();
+    return _initializing ??= _initialize().whenComplete(
+      () => _initializing = null,
+    );
+  }
+
+  Future<void> _initialize() async {
     if (kIsWeb || initialized) return;
     zones.initializeTimeZones();
     await plugin.initialize(

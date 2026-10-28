@@ -1,13 +1,13 @@
 [
   {
     "path": "codemagic.yaml",
-    "length": 1011,
-    "crc32": 1181412548
+    "length": 1329,
+    "crc32": 3222416409
   },
   {
     "path": "docs/complete-ios/ACCEPTANCE.md",
-    "length": 2407,
-    "crc32": 3627959195
+    "length": 2478,
+    "crc32": 3370944077
   },
   {
     "path": "docs/complete-ios/BACKUP.md",
@@ -256,23 +256,23 @@
   },
   {
     "path": "shike_ios/lib/complete/backup_page.dart",
-    "length": 6611,
-    "crc32": 2795526508
+    "length": 6671,
+    "crc32": 1197398987
   },
   {
     "path": "shike_ios/lib/complete/backup_service.dart",
-    "length": 17328,
-    "crc32": 4069995283
+    "length": 20098,
+    "crc32": 861053884
   },
   {
     "path": "shike_ios/lib/complete/cards.dart",
-    "length": 12463,
-    "crc32": 3638261614
+    "length": 13928,
+    "crc32": 596204084
   },
   {
     "path": "shike_ios/lib/complete/controller.dart",
-    "length": 11218,
-    "crc32": 3977197664
+    "length": 11396,
+    "crc32": 873457943
   },
   {
     "path": "shike_ios/lib/complete/editor.dart",
@@ -291,18 +291,18 @@
   },
   {
     "path": "shike_ios/lib/complete/journal_repository.dart",
-    "length": 7107,
-    "crc32": 3797709507
+    "length": 7222,
+    "crc32": 3529713930
   },
   {
     "path": "shike_ios/lib/complete/legacy_migration.dart",
-    "length": 4194,
-    "crc32": 1669025213
+    "length": 4941,
+    "crc32": 2065798351
   },
   {
     "path": "shike_ios/lib/complete/model.dart",
-    "length": 8231,
-    "crc32": 2109686138
+    "length": 8504,
+    "crc32": 3743528398
   },
   {
     "path": "shike_ios/lib/complete/nearby_protocol.dart",
@@ -311,8 +311,8 @@
   },
   {
     "path": "shike_ios/lib/complete/notifications.dart",
-    "length": 3069,
-    "crc32": 2337628891
+    "length": 3311,
+    "crc32": 3924360003
   },
   {
     "path": "shike_ios/lib/complete/persistence.dart",
@@ -326,13 +326,13 @@
   },
   {
     "path": "shike_ios/lib/complete/platform_files_io.dart",
-    "length": 2343,
-    "crc32": 368210384
+    "length": 2457,
+    "crc32": 4119984069
   },
   {
     "path": "shike_ios/lib/complete/platform_files_web.dart",
-    "length": 641,
-    "crc32": 4289700006
+    "length": 631,
+    "crc32": 896278161
   },
   {
     "path": "shike_ios/lib/complete/reading.dart",
@@ -346,13 +346,13 @@
   },
   {
     "path": "shike_ios/lib/complete/reward_engine.dart",
-    "length": 8703,
-    "crc32": 1699735737
+    "length": 8985,
+    "crc32": 3098623086
   },
   {
     "path": "shike_ios/lib/complete/shell.dart",
-    "length": 31893,
-    "crc32": 2954644509
+    "length": 31962,
+    "crc32": 1376924872
   },
   {
     "path": "shike_ios/lib/complete/visual_demo_entry.dart",
@@ -545,6 +545,16 @@
     "crc32": 3481461330
   },
   {
+    "path": "shike_ios/test/complete_feedback_test.dart",
+    "length": 2707,
+    "crc32": 3408018432
+  },
+  {
+    "path": "shike_ios/test/complete_restore_test.dart",
+    "length": 2141,
+    "crc32": 1950967526
+  },
+  {
     "path": "shike_ios/test/complete_rules_test.dart",
     "length": 7786,
     "crc32": 985999975
@@ -641,8 +651,8 @@
   },
   {
     "path": "tools/ios_delivery.py",
-    "length": 7555,
-    "crc32": 318961294
+    "length": 7691,
+    "crc32": 2809843779
   },
   {
     "path": "tools/test_ios_delivery.py",

@@ -152,7 +152,16 @@ class CompleteController extends previous.RefinedController {
     cards
       ..clear()
       ..addAll(s.grants.values.map((j) => RewardCard.fromJson(Json.from(j))));
-    settings.addAll(s.settings);
+    settings
+      ..clear()
+      ..addAll({
+        'greeting': false,
+        'city': '',
+        'weather': false,
+        'exportMood': true,
+        'location': false,
+      })
+      ..addAll(s.settings);
     snapshots
       ..clear()
       ..addAll(s.snapshots.map((k, v) => MapEntry(k, v as String)));
