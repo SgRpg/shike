@@ -1,0 +1,27 @@
+workflows:
+  ios-unsigned:
+    name: 拾刻 iOS 未签名测试包
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+    working_directory: shike_ios
+    environment:
+      flutter: 3.47.8
+      xcode: latest
+      cocoapods: default
+    # Manual runs only. Do not enable paid billing or automatic rebuild loops.
+    scripts:
+      - name: Restore dependencies
+        script: flutter pub get
+      - name: Analyze and test
+        script: |
+          flutter analyze
+          flutter test --reporter expanded
+          python3 ../tools/test_ios_delivery.py
+      - name: Build unsigned device app
+        script: flutter build ios --release --no-codesign --target lib/complete_main.dart
+      - name: Package unsigned IPA
+        script: python3 ../tools/ios_delivery.py package --app build/ios/iphoneos/Runner.app --output build/ios/shike-unsigned.ipa
+    artifacts:
+      - shike_ios/build/ios/shike-unsigned.ipa
+      - shike_ios/build/ios/iphoneos/Runner.app/**
+      - /tmp/xcodebuild_logs/*.log

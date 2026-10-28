@@ -1,0 +1,652 @@
+[
+  {
+    "path": "codemagic.yaml",
+    "length": 1011,
+    "crc32": 1181412548
+  },
+  {
+    "path": "docs/complete-ios/ACCEPTANCE.md",
+    "length": 2407,
+    "crc32": 3627959195
+  },
+  {
+    "path": "docs/complete-ios/BACKUP.md",
+    "length": 1990,
+    "crc32": 2015399615
+  },
+  {
+    "path": "docs/complete-ios/DESIGN.md",
+    "length": 1540,
+    "crc32": 805524590
+  },
+  {
+    "path": "docs/complete-ios/INSTALL.md",
+    "length": 1793,
+    "crc32": 3869374903
+  },
+  {
+    "path": "docs/complete-ios/photo-manifest.example.json",
+    "length": 120,
+    "crc32": 3655682209
+  },
+  {
+    "path": "README.md",
+    "length": 1239,
+    "crc32": 4106194254
+  },
+  {
+    "path": "shike_ios/.metadata",
+    "length": 1110,
+    "crc32": 1353134705
+  },
+  {
+    "path": "shike_ios/analysis_options.yaml",
+    "length": 1517,
+    "crc32": 1498099802
+  },
+  {
+    "path": "shike_ios/assets/phrases.json",
+    "length": 11120,
+    "crc32": 829326226
+  },
+  {
+    "path": "shike_ios/ios/.gitignore",
+    "length": 603,
+    "crc32": 4153214730
+  },
+  {
+    "path": "shike_ios/ios/Flutter/AppFrameworkInfo.plist",
+    "length": 744,
+    "crc32": 1832218423
+  },
+  {
+    "path": "shike_ios/ios/Flutter/Debug.xcconfig",
+    "length": 31,
+    "crc32": 18647105
+  },
+  {
+    "path": "shike_ios/ios/Flutter/Release.xcconfig",
+    "length": 31,
+    "crc32": 18647105
+  },
+  {
+    "path": "shike_ios/ios/Runner/AppDelegate.swift",
+    "length": 711,
+    "crc32": 3639883736
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "length": 2641,
+    "crc32": 2091944347
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png",
+    "length": 10932,
+    "crc32": 1198400731
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png",
+    "length": 295,
+    "crc32": 2876207525
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png",
+    "length": 406,
+    "crc32": 3491121180
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png",
+    "length": 450,
+    "crc32": 2015484906
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png",
+    "length": 282,
+    "crc32": 3452515805
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png",
+    "length": 462,
+    "crc32": 3062589227
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png",
+    "length": 704,
+    "crc32": 265014402
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+    "length": 406,
+    "crc32": 3491121180
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png",
+    "length": 586,
+    "crc32": 162407737
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png",
+    "length": 862,
+    "crc32": 248214798
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+    "length": 862,
+    "crc32": 248214798
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png",
+    "length": 1674,
+    "crc32": 540115644
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png",
+    "length": 762,
+    "crc32": 4034408844
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png",
+    "length": 1226,
+    "crc32": 1355478570
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png",
+    "length": 1418,
+    "crc32": 2277615267
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json",
+    "length": 414,
+    "crc32": 1607637244
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png",
+    "length": 68,
+    "crc32": 1500428512
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png",
+    "length": 68,
+    "crc32": 1500428512
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+    "length": 68,
+    "crc32": 1500428512
+  },
+  {
+    "path": "shike_ios/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+    "length": 340,
+    "crc32": 2232392674
+  },
+  {
+    "path": "shike_ios/ios/Runner/Base.lproj/LaunchScreen.storyboard",
+    "length": 2414,
+    "crc32": 893579759
+  },
+  {
+    "path": "shike_ios/ios/Runner/Base.lproj/Main.storyboard",
+    "length": 1631,
+    "crc32": 3540880971
+  },
+  {
+    "path": "shike_ios/ios/Runner/Info.plist",
+    "length": 3034,
+    "crc32": 3787861141
+  },
+  {
+    "path": "shike_ios/ios/Runner/Runner-Bridging-Header.h",
+    "length": 39,
+    "crc32": 2167451117
+  },
+  {
+    "path": "shike_ios/ios/Runner/SceneDelegate.swift",
+    "length": 82,
+    "crc32": 2877638789
+  },
+  {
+    "path": "shike_ios/ios/Runner/ShikePrivateBridge.swift",
+    "length": 18964,
+    "crc32": 1606901208
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcodeproj/project.pbxproj",
+    "length": 26872,
+    "crc32": 2056182607
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+    "length": 142,
+    "crc32": 1609838774
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+    "length": 246,
+    "crc32": 2863393086
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+    "length": 234,
+    "crc32": 2056722073
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme",
+    "length": 4836,
+    "crc32": 101575992
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcworkspace/contents.xcworkspacedata",
+    "length": 159,
+    "crc32": 2851871116
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+    "length": 246,
+    "crc32": 2863393086
+  },
+  {
+    "path": "shike_ios/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+    "length": 234,
+    "crc32": 2056722073
+  },
+  {
+    "path": "shike_ios/ios/RunnerTests/RunnerTests.swift",
+    "length": 297,
+    "crc32": 2296966927
+  },
+  {
+    "path": "shike_ios/lib/complete/backup_page.dart",
+    "length": 6611,
+    "crc32": 2795526508
+  },
+  {
+    "path": "shike_ios/lib/complete/backup_service.dart",
+    "length": 17328,
+    "crc32": 4069995283
+  },
+  {
+    "path": "shike_ios/lib/complete/cards.dart",
+    "length": 12463,
+    "crc32": 3638261614
+  },
+  {
+    "path": "shike_ios/lib/complete/controller.dart",
+    "length": 11229,
+    "crc32": 3412796834
+  },
+  {
+    "path": "shike_ios/lib/complete/editor.dart",
+    "length": 31470,
+    "crc32": 3343157755
+  },
+  {
+    "path": "shike_ios/lib/complete/gallery.dart",
+    "length": 10217,
+    "crc32": 552094973
+  },
+  {
+    "path": "shike_ios/lib/complete/heart.dart",
+    "length": 19018,
+    "crc32": 1217050433
+  },
+  {
+    "path": "shike_ios/lib/complete/journal_repository.dart",
+    "length": 7104,
+    "crc32": 1469891169
+  },
+  {
+    "path": "shike_ios/lib/complete/legacy_migration.dart",
+    "length": 4194,
+    "crc32": 1669025213
+  },
+  {
+    "path": "shike_ios/lib/complete/model.dart",
+    "length": 8231,
+    "crc32": 2109686138
+  },
+  {
+    "path": "shike_ios/lib/complete/nearby_protocol.dart",
+    "length": 3282,
+    "crc32": 1075766547
+  },
+  {
+    "path": "shike_ios/lib/complete/notifications.dart",
+    "length": 3069,
+    "crc32": 2337628891
+  },
+  {
+    "path": "shike_ios/lib/complete/persistence.dart",
+    "length": 3770,
+    "crc32": 1675125043
+  },
+  {
+    "path": "shike_ios/lib/complete/platform_files.dart",
+    "length": 80,
+    "crc32": 564182098
+  },
+  {
+    "path": "shike_ios/lib/complete/platform_files_io.dart",
+    "length": 2343,
+    "crc32": 368210384
+  },
+  {
+    "path": "shike_ios/lib/complete/platform_files_web.dart",
+    "length": 641,
+    "crc32": 4289700006
+  },
+  {
+    "path": "shike_ios/lib/complete/reading.dart",
+    "length": 20414,
+    "crc32": 3876666945
+  },
+  {
+    "path": "shike_ios/lib/complete/reference_picker.dart",
+    "length": 5055,
+    "crc32": 1660807083
+  },
+  {
+    "path": "shike_ios/lib/complete/reward_engine.dart",
+    "length": 8703,
+    "crc32": 1699735737
+  },
+  {
+    "path": "shike_ios/lib/complete/shell.dart",
+    "length": 31893,
+    "crc32": 2954644509
+  },
+  {
+    "path": "shike_ios/lib/complete/visual_demo_entry.dart",
+    "length": 1580,
+    "crc32": 1462645901
+  },
+  {
+    "path": "shike_ios/lib/complete/weather.dart",
+    "length": 2088,
+    "crc32": 1649988702
+  },
+  {
+    "path": "shike_ios/lib/complete_main.dart",
+    "length": 1367,
+    "crc32": 4282795929
+  },
+  {
+    "path": "shike_ios/lib/main.dart",
+    "length": 79,
+    "crc32": 2915204061
+  },
+  {
+    "path": "shike_ios/lib/refined/art/keepsake-covers.png",
+    "length": 2468610,
+    "crc32": 1864770431
+  },
+  {
+    "path": "shike_ios/lib/refined/art/OFL-NotoSerifSC.txt",
+    "length": 4350,
+    "crc32": 3991485446
+  },
+  {
+    "path": "shike_ios/lib/refined/art/ShikeTitles.ttf",
+    "length": 235376,
+    "crc32": 2620829256
+  },
+  {
+    "path": "shike_ios/lib/refined/art_data.dart",
+    "length": 3611274,
+    "crc32": 2032768353
+  },
+  {
+    "path": "shike_ios/lib/refined/backup_page.dart",
+    "length": 6844,
+    "crc32": 2737931671
+  },
+  {
+    "path": "shike_ios/lib/refined/cards.dart",
+    "length": 12167,
+    "crc32": 1984966602
+  },
+  {
+    "path": "shike_ios/lib/refined/controller.dart",
+    "length": 9411,
+    "crc32": 2953094210
+  },
+  {
+    "path": "shike_ios/lib/refined/design.dart",
+    "length": 16316,
+    "crc32": 594333250
+  },
+  {
+    "path": "shike_ios/lib/refined/editor.dart",
+    "length": 29179,
+    "crc32": 1742099014
+  },
+  {
+    "path": "shike_ios/lib/refined/export.dart",
+    "length": 6911,
+    "crc32": 731412678
+  },
+  {
+    "path": "shike_ios/lib/refined/fixtures.dart",
+    "length": 2138,
+    "crc32": 1632411309
+  },
+  {
+    "path": "shike_ios/lib/refined/gallery.dart",
+    "length": 9607,
+    "crc32": 2403478466
+  },
+  {
+    "path": "shike_ios/lib/refined/heart.dart",
+    "length": 18451,
+    "crc32": 972943482
+  },
+  {
+    "path": "shike_ios/lib/refined/heart_tabs.dart",
+    "length": 2453,
+    "crc32": 3041231785
+  },
+  {
+    "path": "shike_ios/lib/refined/keep_feedback.dart",
+    "length": 4914,
+    "crc32": 1814508234
+  },
+  {
+    "path": "shike_ios/lib/refined/mood_nudge.dart",
+    "length": 576,
+    "crc32": 3157415792
+  },
+  {
+    "path": "shike_ios/lib/refined/mood_reminder.dart",
+    "length": 1665,
+    "crc32": 3351746940
+  },
+  {
+    "path": "shike_ios/lib/refined/mood_wave.dart",
+    "length": 2320,
+    "crc32": 3257929304
+  },
+  {
+    "path": "shike_ios/lib/refined/quick_send.dart",
+    "length": 2407,
+    "crc32": 988746071
+  },
+  {
+    "path": "shike_ios/lib/refined/radial_filter.dart",
+    "length": 8188,
+    "crc32": 1897967546
+  },
+  {
+    "path": "shike_ios/lib/refined/reading.dart",
+    "length": 17458,
+    "crc32": 2521294692
+  },
+  {
+    "path": "shike_ios/lib/refined/semicircle_filter.dart",
+    "length": 8729,
+    "crc32": 391644181
+  },
+  {
+    "path": "shike_ios/lib/refined/shell.dart",
+    "length": 25173,
+    "crc32": 3603766700
+  },
+  {
+    "path": "shike_ios/lib/refined_main.dart",
+    "length": 82,
+    "crc32": 2063481229
+  },
+  {
+    "path": "shike_ios/lib/src/app.dart",
+    "length": 28861,
+    "crc32": 3504162416
+  },
+  {
+    "path": "shike_ios/lib/src/backup.dart",
+    "length": 7504,
+    "crc32": 4093207567
+  },
+  {
+    "path": "shike_ios/lib/src/media.dart",
+    "length": 5412,
+    "crc32": 3857980010
+  },
+  {
+    "path": "shike_ios/lib/src/notifications.dart",
+    "length": 1712,
+    "crc32": 2932571759
+  },
+  {
+    "path": "shike_ios/lib/src/rewards.dart",
+    "length": 5624,
+    "crc32": 582988734
+  },
+  {
+    "path": "shike_ios/lib/src/store.dart",
+    "length": 4013,
+    "crc32": 2938643876
+  },
+  {
+    "path": "shike_ios/pubspec.lock",
+    "length": 30144,
+    "crc32": 110134019
+  },
+  {
+    "path": "shike_ios/pubspec.yaml",
+    "length": 4333,
+    "crc32": 2659774975
+  },
+  {
+    "path": "shike_ios/test/complete_backup_test.dart",
+    "length": 7474,
+    "crc32": 2900440970
+  },
+  {
+    "path": "shike_ios/test/complete_core_test.dart",
+    "length": 10370,
+    "crc32": 3481461330
+  },
+  {
+    "path": "shike_ios/test/complete_rules_test.dart",
+    "length": 7766,
+    "crc32": 4017861420
+  },
+  {
+    "path": "shike_ios/test/complete_ui_test.dart",
+    "length": 5862,
+    "crc32": 2027064388
+  },
+  {
+    "path": "shike_ios/test/heart_tabs_test.dart",
+    "length": 2073,
+    "crc32": 4289525567
+  },
+  {
+    "path": "shike_ios/test/layout_simplification_test.dart",
+    "length": 2269,
+    "crc32": 3898491769
+  },
+  {
+    "path": "shike_ios/test/mood_nudge_test.dart",
+    "length": 2673,
+    "crc32": 575515611
+  },
+  {
+    "path": "shike_ios/test/mood_reminder_test.dart",
+    "length": 4107,
+    "crc32": 973501241
+  },
+  {
+    "path": "shike_ios/test/mood_wave_test.dart",
+    "length": 3283,
+    "crc32": 2776893900
+  },
+  {
+    "path": "shike_ios/test/quick_send_test.dart",
+    "length": 4668,
+    "crc32": 2303240629
+  },
+  {
+    "path": "shike_ios/test/refined_feedback_test.dart",
+    "length": 6419,
+    "crc32": 3849422195
+  },
+  {
+    "path": "shike_ios/test/refined_test.dart",
+    "length": 10566,
+    "crc32": 3182501003
+  },
+  {
+    "path": "shike_ios/test/semicircle_filter_test.dart",
+    "length": 6920,
+    "crc32": 1981187691
+  },
+  {
+    "path": "shike_ios/test/shike_test.dart",
+    "length": 4079,
+    "crc32": 1704331138
+  },
+  {
+    "path": "shike_ios/web/favicon.png",
+    "length": 917,
+    "crc32": 2271484922
+  },
+  {
+    "path": "shike_ios/web/icons/Icon-192.png",
+    "length": 5292,
+    "crc32": 489690988
+  },
+  {
+    "path": "shike_ios/web/icons/Icon-512.png",
+    "length": 8252,
+    "crc32": 3138528476
+  },
+  {
+    "path": "shike_ios/web/icons/Icon-maskable-192.png",
+    "length": 5594,
+    "crc32": 543707886
+  },
+  {
+    "path": "shike_ios/web/icons/Icon-maskable-512.png",
+    "length": 20998,
+    "crc32": 796966859
+  },
+  {
+    "path": "shike_ios/web/index.html",
+    "length": 1561,
+    "crc32": 921792194
+  },
+  {
+    "path": "shike_ios/web/manifest.json",
+    "length": 941,
+    "crc32": 941761122
+  },
+  {
+    "path": "tools/ios_delivery.py",
+    "length": 7500,
+    "crc32": 530212387
+  },
+  {
+    "path": "tools/test_ios_delivery.py",
+    "length": 2989,
+    "crc32": 3694048538
+  }
+]

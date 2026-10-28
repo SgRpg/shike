@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "photos": [
+    {"id": "memory-001", "file": "photos/001.jpg", "description": "傍晚的云"}
+  ]
+}

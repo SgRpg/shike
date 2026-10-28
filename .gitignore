@@ -1,0 +1,14 @@
+envronment/
+**/build/
+**/.dart_tool/
+**/Pods/
+**/.symlinks/
+**/ephemeral/
+**/private/
+**/xcuserdata/
+*.ipa
+*.zip
+*.db
+*.mobileprovision
+*.p12
+.DS_Store
