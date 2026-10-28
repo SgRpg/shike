@@ -6,8 +6,8 @@
   },
   {
     "path": "docs/complete-ios/ACCEPTANCE.md",
-    "length": 2478,
-    "crc32": 3370944077
+    "length": 2980,
+    "crc32": 451627315
   },
   {
     "path": "docs/complete-ios/BACKUP.md",
@@ -21,8 +21,8 @@
   },
   {
     "path": "docs/complete-ios/INSTALL.md",
-    "length": 1793,
-    "crc32": 3869374903
+    "length": 2282,
+    "crc32": 2798198955
   },
   {
     "path": "docs/complete-ios/photo-manifest.example.json",
@@ -31,8 +31,8 @@
   },
   {
     "path": "README.md",
-    "length": 1239,
-    "crc32": 4106194254
+    "length": 1428,
+    "crc32": 1770856469
   },
   {
     "path": "shike_ios/.metadata",

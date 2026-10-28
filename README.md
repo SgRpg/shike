@@ -16,6 +16,6 @@ flutter run -t lib/complete_main.dart
 
 根目录 `codemagic.yaml` 提供手动触发的未签名 iOS 构建。Windows 工具 `tools/ios_delivery.py` 用于源码白名单导出、安装包打包及签名前注入私人素材。无需账号服务或日记云同步。
 
-当前自动化和网页构建结果见 `docs/complete-ios/ACCEPTANCE.md`。云端 iOS 编译、手机侧载、续签、权限与附近双机迁移必须以实际验收为准；源码存在不代表这些验收已通过。
+当前自动化和网页构建结果见 `docs/complete-ios/ACCEPTANCE.md`。2026-10-28 已完成云端 iOS 编译，源码提交 ae26d1c 对应的未签名安装包可从[本次构建的 Artifacts](https://codemagic.io/app/6ae160c2055898fa8b01b4e5/build/6ae16e3e206ce93970c6b5a1)下载。手机侧载、续签、权限与附近双机迁移仍待实际验收；云端构建成功不代表这些验收已通过。
 
 [安装与续签](docs/complete-ios/INSTALL.md) · [备份格式](docs/complete-ios/BACKUP.md)

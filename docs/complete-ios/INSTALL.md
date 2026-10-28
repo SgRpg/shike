@@ -1,6 +1,8 @@
 # 拾刻 iOS 构建与免费侧载
 
-本项目不保存 Apple 密码、签名证书或手机个人数据。当前 Windows 无 Xcode，原生编译和手机验收尚未完成。
+本项目不保存 Apple 密码、签名证书或手机个人数据。2026-10-28 已完成云端 macOS 原生编译，并产出约 10.64 MB 的未签名 IPA；签名安装及手机验收尚未完成。
+
+本次安装包对应源码提交 `ae26d1c`。登录已连接的 Codemagic 个人账号后，打开[构建结果](https://codemagic.io/app/6ae160c2055898fa8b01b4e5/build/6ae16e3e206ce93970c6b5a1)，在 Artifacts 中下载 `shike-unsigned.ipa`。该包需先签名，不能直接点开安装。自动下载到 Windows 的操作尚未成功，不能将其标为已完成本地验包。图标候选稿尚未接入此安装包。
 
 1. 源码上传至用户指定的 SgRpg/shike，按用户确认保持公开。上传采用 `tools/ios_delivery.py source` 白名单导出，环境、备份和私人素材排除。
 2. 在 Codemagic 登录并选择该仓库，使用根目录 codemagic.yaml 的 ios-unsigned 工作流，手动开始。仅使用个人免费额度；额度不足时停止，禁止自动开启付费。构建预计最长 30 分钟，但计费以服务实际显示为准。
