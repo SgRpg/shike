@@ -51,6 +51,7 @@ def source(output):
             bundle.writestr(relative, data)
         bundle.writestr('SOURCE-MANIFEST.json', json.dumps(manifest, ensure_ascii=False, indent=2))
         bundle.writestr('.gitignore', 'envronment/\n**/build/\n**/.dart_tool/\n**/Pods/\n**/.symlinks/\n**/ephemeral/\n**/private/\n**/xcuserdata/\n*.ipa\n*.zip\n*.db\n*.mobileprovision\n*.p12\n.DS_Store\n')
+        bundle.writestr('.gitattributes', '* -text\n')
     verify(output)
     print(f'已导出 {len(manifest)} 个白名单文件: {output}')
 

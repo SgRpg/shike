@@ -641,8 +641,8 @@
   },
   {
     "path": "tools/ios_delivery.py",
-    "length": 7500,
-    "crc32": 530212387
+    "length": 7555,
+    "crc32": 318961294
   },
   {
     "path": "tools/test_ios_delivery.py",
