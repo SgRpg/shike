@@ -271,8 +271,8 @@
   },
   {
     "path": "shike_ios/lib/complete/controller.dart",
-    "length": 11229,
-    "crc32": 3412796834
+    "length": 11218,
+    "crc32": 3977197664
   },
   {
     "path": "shike_ios/lib/complete/editor.dart",
@@ -291,8 +291,8 @@
   },
   {
     "path": "shike_ios/lib/complete/journal_repository.dart",
-    "length": 7104,
-    "crc32": 1469891169
+    "length": 7107,
+    "crc32": 3797709507
   },
   {
     "path": "shike_ios/lib/complete/legacy_migration.dart",
@@ -546,8 +546,8 @@
   },
   {
     "path": "shike_ios/test/complete_rules_test.dart",
-    "length": 7766,
-    "crc32": 4017861420
+    "length": 7786,
+    "crc32": 985999975
   },
   {
     "path": "shike_ios/test/complete_ui_test.dart",

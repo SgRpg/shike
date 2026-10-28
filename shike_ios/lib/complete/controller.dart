@@ -102,9 +102,9 @@ class CompleteController extends previous.RefinedController {
   late final CapsuleNotificationService notifications;
   final weather = WeatherService();
   final List<Json> unpresented = [];
-  CompleteController(CompleteStore source, {bool demo = false})
+  CompleteController(CompleteStore source, {super.demo = false})
     : repository = source.repository,
-      super(source, demo: demo) {
+      super(source) {
     engine = RewardEngine(repository.state);
     notifications = CapsuleNotificationService(repository);
     source.pendingLinks = (id) => sentenceLinks(id);

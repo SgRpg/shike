@@ -20,18 +20,20 @@ void main() {
     repo = JournalRepository(db, clock: () => now);
     engine = RewardEngine(db, lottery: () => 1);
     await db.transaction((s) {
-      for (var i = 0; i < 10; i++)
+      for (var i = 0; i < 10; i++) {
         s.resources['photo$i'] = {'kind': 'photo', 'available': true};
+      }
     });
   });
   test('all cumulative and streak milestones; unique natural days; fixed grants do not repeat', () async {
     for (var i = 0; i < 101; i++) {
       now = DateTime(2026, 1, 1 + i, 12);
       await engine.evaluate(await repo.commitCompleted(diary('d$i', now)));
-      if (i == 0)
+      if (i == 0) {
         await engine.evaluate(
           await repo.commitCompleted(diary('same-day', now)),
         );
+      }
     }
     expect(
       db.snapshot.grants.keys,

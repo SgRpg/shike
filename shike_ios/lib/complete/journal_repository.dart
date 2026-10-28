@@ -181,7 +181,7 @@ class JournalRepository extends ChangeNotifier {
     ];
     if (due.isNotEmpty) {
       s.meta['dueHintDay'] = today;
-      for(final id in due)s.capsules[id]['hintedAt']=clock().toUtc().toIso8601String();
+      for(final id in due) {s.capsules[id]['hintedAt']=clock().toUtc().toIso8601String();}
     }
     return due;
   });
