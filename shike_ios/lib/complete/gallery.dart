@@ -21,7 +21,11 @@ class _RefinedGalleryState extends State<RefinedGallery> {
     setState(() => importing = true);
     var count = 0;
     try {
-      final files = await ImagePicker().pickMultiImage();
+      final files = await ImagePicker().pickMultiImage(
+        maxWidth: 2048,
+        maxHeight: 2048,
+        imageQuality: 88,
+      );
       for (final file in files) {
         await widget.controller.addPhoto(await copyImage(file));
         count++;

@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import '../src/rewards.dart' show RewardCard;
 import '../src/store.dart';
-import '../src/media.dart' show storedImage;
+import 'optimized_images.dart' show storedImage;
 import 'controller.dart';
 import '../refined/design.dart';
 import '../refined/art_data.dart';

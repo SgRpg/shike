@@ -11,11 +11,13 @@ import 'complete/controller.dart';
 import 'complete/shell.dart';
 import 'complete/backup_service.dart';
 import 'complete/platform_files.dart';
+import 'complete/optimized_images.dart' show configurePhotoMemoryCache;
 
 /// Explicit full-version entry. The existing main.dart remains untouched until
 /// the user approves its one-line delegation change.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configurePhotoMemoryCache();
   const demo = bool.fromEnvironment('SHIKE_VISUAL_DEMO');
   if (demo) {
     await preview.main();

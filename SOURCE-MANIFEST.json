@@ -30,6 +30,11 @@
     "crc32": 3655682209
   },
   {
+    "path": "docs/complete-ios/PHOTO_MEMORY.md",
+    "length": 1965,
+    "crc32": 3788763849
+  },
+  {
     "path": "README.md",
     "length": 1428,
     "crc32": 1770856469
@@ -266,8 +271,8 @@
   },
   {
     "path": "shike_ios/lib/complete/cards.dart",
-    "length": 13928,
-    "crc32": 596204084
+    "length": 13932,
+    "crc32": 2454940079
   },
   {
     "path": "shike_ios/lib/complete/controller.dart",
@@ -276,13 +281,13 @@
   },
   {
     "path": "shike_ios/lib/complete/editor.dart",
-    "length": 31470,
-    "crc32": 3343157755
+    "length": 31588,
+    "crc32": 1279803964
   },
   {
     "path": "shike_ios/lib/complete/gallery.dart",
-    "length": 10217,
-    "crc32": 552094973
+    "length": 10299,
+    "crc32": 1385299739
   },
   {
     "path": "shike_ios/lib/complete/heart.dart",
@@ -315,6 +320,11 @@
     "crc32": 3924360003
   },
   {
+    "path": "shike_ios/lib/complete/optimized_images.dart",
+    "length": 4104,
+    "crc32": 524276986
+  },
+  {
     "path": "shike_ios/lib/complete/persistence.dart",
     "length": 3770,
     "crc32": 1675125043
@@ -336,8 +346,8 @@
   },
   {
     "path": "shike_ios/lib/complete/reading.dart",
-    "length": 20414,
-    "crc32": 3876666945
+    "length": 20418,
+    "crc32": 3443925250
   },
   {
     "path": "shike_ios/lib/complete/reference_picker.dart",
@@ -366,8 +376,8 @@
   },
   {
     "path": "shike_ios/lib/complete_main.dart",
-    "length": 1367,
-    "crc32": 4282795929
+    "length": 1470,
+    "crc32": 2418180945
   },
   {
     "path": "shike_ios/lib/main.dart",
@@ -588,6 +598,11 @@
     "path": "shike_ios/test/mood_wave_test.dart",
     "length": 3283,
     "crc32": 2776893900
+  },
+  {
+    "path": "shike_ios/test/optimized_images_test.dart",
+    "length": 2821,
+    "crc32": 1549392964
   },
   {
     "path": "shike_ios/test/quick_send_test.dart",

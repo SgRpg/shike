@@ -11,7 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import '../src/store.dart';
-import '../src/media.dart' show storedImage;
+import 'optimized_images.dart' show storedImage;
 import 'controller.dart';
 import '../refined/design.dart';
 import '../refined/export.dart';

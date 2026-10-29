@@ -11,7 +11,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 
 import '../src/store.dart';
-import '../src/media.dart' show copyImage, storedImage;
+import '../src/media.dart' show copyImage;
+import 'optimized_images.dart' show storedImage;
 import 'model.dart';
 import 'reference_picker.dart';
 import 'controller.dart';
@@ -215,7 +216,11 @@ class _RefinedEditorState extends State<RefinedEditor>
     if (importing || busy) return;
     setState(() => importing = true);
     try {
-      final files = await ImagePicker().pickMultiImage();
+      final files = await ImagePicker().pickMultiImage(
+        maxWidth: 2048,
+        maxHeight: 2048,
+        imageQuality: 88,
+      );
       for (final file in files) {
         photos.add(await copyImage(file));
       }
