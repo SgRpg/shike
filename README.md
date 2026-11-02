@@ -4,14 +4,14 @@
 
 ## 安卓安装包
 
-支持 Android 8.0 及以上的 ARM 手机。下载 APK 后，按手机提示允许对应来源安装即可，无需每周续签。
+两版均已加入呼吸光标、4/5 分日记的温柔反馈，以及未选心情时自动展开色点并波浪提醒。支持 Android 8.0 及以上的 ARM 手机。下载 APK 后，按手机提示允许对应来源安装即可，无需每周续签。
 
 | 版本 | 安装包 | 主要区别 |
 | --- | --- | --- |
-| 彩蛋版 1.0.2 | [下载彩蛋版 APK](https://github.com/SgRpg/shike/releases/download/android-20261102/shike-rewards-1.0.2-android.apk) | 保留彩蛋、卡包和低心情提示；公开包不含私人照片素材 |
-| 简版 1.0.2 | [下载简版 APK](https://github.com/SgRpg/shike/releases/download/android-20261102/shike-plain-1.0.2-android.apk) | 去掉彩蛋和卡包，保留低心情提示 |
+| 彩蛋版 1.0.3 | [下载彩蛋版 APK](https://github.com/SgRpg/shike/releases/download/android-20261103/shike-rewards-1.0.3-android.apk) | 保留彩蛋、卡包和低心情提示；公开包不含私人照片素材 |
+| 简版 1.0.3 | [下载简版 APK](https://github.com/SgRpg/shike/releases/download/android-20261103/shike-plain-1.0.3-android.apk) | 去掉彩蛋和卡包，保留低心情提示 |
 
-[查看本次发布与全部安装包](https://github.com/SgRpg/shike/releases/tag/android-20261102)
+[查看本次发布与全部安装包](https://github.com/SgRpg/shike/releases/tag/android-20261103)
 
 两版都保留日记、草稿、拾影、时间胶囊、句子引用、心情图表、天气、备份迁移及关于页故事。彩蛋版的私人照片素材不上传仓库或 Releases；公开包缺少可用照片时会跳过照片卡，之后不追补。
 
