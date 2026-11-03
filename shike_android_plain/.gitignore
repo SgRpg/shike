@@ -1,0 +1,19 @@
+# Private and generated data never belong in this repository.
+/build/
+/.dart_tool/
+/.flutter-plugins*
+/android/.gradle/
+/android/.kotlin/
+/android/local.properties
+/android/key.properties
+/assets/private/
+*.apk
+*.aab
+*.jks
+*.keystore
+*.key
+*.p8
+*.p12
+*.db
+*.sqlite*
+.env*
